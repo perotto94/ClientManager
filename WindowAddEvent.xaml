@@ -1,0 +1,155 @@
+﻿<Window x:Class="ClientManager.WindowAddEvent"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClientManager"
+        mc:Ignorable="d"
+        Title="Добавить событие"
+        Height="500"
+        Width="500"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Icon="/icon_main.png">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7*" />
+            <RowDefinition Height="7*" />
+            <RowDefinition Height="7*" />
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="5*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15*" />
+            <ColumnDefinition Width="12*" />
+            <ColumnDefinition Width="7*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Grid.Column="0"
+                   FontSize="20"
+                   Text="База данных"
+                   Height="28"
+                   Width="200"
+                   TextAlignment="Left"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
+
+        <TextBlock Grid.Row="1"
+                   Grid.Column="0"
+                   FontSize="20"
+                   Text="Дата и время начала"
+                   Height="28"
+                   Width="200"
+                   TextAlignment="Left"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
+
+        <TextBlock Grid.Row="2"
+                   Grid.Column="0"
+                   FontSize="20"
+                   Text="Продолжительность"
+                   Height="28"
+                   Width="200"
+                   TextAlignment="Left"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
+
+        <TextBlock Grid.Row="3"
+                   Grid.Column="0"
+                   FontSize="20"
+                   Text="Описание"
+                   Height="28"
+                   Width="200"
+                   TextAlignment="Left"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
+
+        <ComboBox x:Name="cbDatabase"
+                  Grid.Row="0"
+                  Grid.Column="1"
+                  Grid.ColumnSpan="2"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  FontSize="20"
+                  Height="34"
+                  Width="250" />
+
+        <DatePicker x:Name="datePickerStart"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    FontSize="20"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center" />
+
+        <TextBox x:Name="tbTimeStart"
+                 Grid.Row="1"
+                 Grid.Column="2"
+                 Text="00:00"
+                 FontSize="20"
+                 Height="34"
+                 Width="60"
+                 TextAlignment="Center"
+                 BorderThickness="2"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center"
+                 TextChanged="tbTimeStart_TextChanged" />
+
+        <TextBox x:Name="tbDuration"
+                 Grid.Row="2"
+                 Grid.Column="1"
+                 Grid.ColumnSpan="2"
+                 Text="01:00"
+                 FontSize="20"
+                 Height="34"
+                 Width="60"
+                 TextAlignment="Center"
+                 BorderThickness="2"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center"
+                 TextChanged="tbDuration_TextChanged" />
+
+        <TextBox x:Name="tbDescription"
+                 Grid.Row="3"
+                 Grid.Column="1"
+                 Grid.ColumnSpan="2"
+                 Text=""
+                 FontSize="20"
+                 Width="250"
+                 Height="140"
+                 TextAlignment="Left"
+                 BorderThickness="2"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center"
+                 TextWrapping="Wrap" />
+
+        <Grid Grid.Row="4"
+              Grid.ColumnSpan="3">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="buttonSave"
+                    Grid.Column="0"
+                    Content="Сохранить"
+                    FontSize="18"
+                    Margin="15,2,15,10"
+                    Click="buttonSave_Click" />
+
+            <Button x:Name="buttonDelete"
+                    Grid.Column="1"
+                    Content="Удалить"
+                    FontSize="18"
+                    Margin="15,2,15,10"
+                    IsEnabled="False"
+                    Click="buttonDelete_Click" />
+
+        </Grid>
+
+    </Grid>
+
+</Window>

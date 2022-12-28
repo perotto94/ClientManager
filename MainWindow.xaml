@@ -1,0 +1,1221 @@
+﻿<Window x:Class="ClientManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClientManager"
+        mc:Ignorable="d"
+        Title="Менеджер клиентов"
+        Height="1000"
+        Width="1900"
+        ResizeMode="CanResize"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        Icon="/icon_main.png">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="18*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="20*" />
+                <ColumnDefinition Width="10*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+
+                <Button x:Name="buttonUp"
+                        Margin="5"
+                        Height="70"
+                        Grid.Row="0"
+                        Background="AliceBlue"
+                        Click="buttonUp_Click">
+                    <TextBlock FontFamily="Segoe UI Symbol"
+                               FontSize="40"
+                               Text="&#x21e7;"
+                               Margin="0,-5,0,0" />
+                </Button>
+
+                <Button x:Name="buttonDown"
+                        Margin="5"
+                        Height="70"
+                        Grid.Row="1"
+                        Background="AliceBlue"
+                        Click="buttonDown_Click">
+                    <TextBlock FontFamily="Segoe UI Symbol"
+                               FontSize="40"
+                               Text="&#x21e9;"
+                               Margin="0,-5,0,0" />
+                </Button>
+
+            </Grid>
+
+            <Grid Grid.Column="1">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Row="0"
+                      Grid.Column="0"
+                      x:Name="gridClient_0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <RichTextBox x:Name="rtbClient_0"
+                                 Grid.Row="0"
+                                 Grid.Column="0"
+                                 Margin="5"
+                                 BorderThickness="1"
+                                 IsReadOnly="True" />
+                    
+                    <ListBox x:Name="lbOrders_0"
+                             Grid.Row="1"
+                             Grid.Column="0"
+                             Margin="5"
+                             BorderThickness="1"
+                             SelectionMode="Single" 
+                             SelectionChanged="lbOrders_SelectionChanged"/>
+
+                    <ListBox x:Name="lbExercises_0"
+                             Grid.Row="2"
+                             Grid.Column="0"
+                             Margin="5"
+                             BorderThickness="1"
+                             SelectionMode="Single"
+                             SelectionChanged="lbExercises_SelectionChanged"/>
+
+                    <Grid Grid.Row="0"
+                          Grid.Column="1">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <Button x:Name="butClientEdit_0"
+                                Content="Редактировать"
+                                Grid.Row="0"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butClientEdit_Click" />
+
+                        <Button x:Name="butClientOpenFolder_0"
+                                Content="Открыть папку"
+                                Grid.Row="1"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butClientOpenFolder_Click" />
+
+                        <Button x:Name="butClientAddOrderSingle_0"
+                                Content="Добавить разовый заказ"
+                                Grid.Row="2"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butClientAddOrderSingle_Click" />
+
+                        <Button x:Name="butClientAddOrderRegular_0"
+                                Content="Добавить регулярный заказ"
+                                Grid.Row="3"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butClientAddOrderRegular_Click" />
+
+                    </Grid>
+
+                    <Grid Grid.Row="1"
+                          Grid.Column="1">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <RichTextBox x:Name="rtbOrder_0"
+                                     Grid.Row="0"
+                                     Margin="5"
+                                     BorderThickness="1"
+                                     IsReadOnly="True" />
+
+                        <Button x:Name="butOrderEdit_0"
+                                Content="Редактировать"
+                                Grid.Row="1"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butOrderEdit_Click" />
+
+                        <Button x:Name="butAddExercise_0"
+                                Content="Добавить занятие"
+                                Grid.Row="2"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butAddExercise_Click" />
+
+                    </Grid>
+
+                    <Grid Grid.Row="2"
+                          Grid.Column="1">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <RichTextBox x:Name="rtbExercise_0"
+                                     Grid.Row="0"
+                                     Margin="5"
+                                     BorderThickness="1"
+                                     IsReadOnly="True" />
+
+                        <Button x:Name="butExerciseEdit_0"
+                                Content="Редактировать"
+                                Grid.Row="1"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butExerciseEdit_Click" />
+
+                    </Grid>
+
+                </Grid>
+
+                <Grid Grid.Row="0"
+                      Grid.Column="1"
+                      x:Name="gridClient_1">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <RichTextBox x:Name="rtbClient_1"
+                                 Grid.Row="0"
+                                 Grid.Column="0"
+                                 Margin="5"
+                                 BorderThickness="1"
+                                 IsReadOnly="True" />
+
+                    <ListBox x:Name="lbOrders_1"
+                             Grid.Row="1"
+                             Grid.Column="0"
+                             Margin="5"
+                             BorderThickness="1"
+                             SelectionMode="Single"
+                             SelectionChanged="lbOrders_SelectionChanged" />
+
+                    <ListBox x:Name="lbExercises_1"
+                             Grid.Row="2"
+                             Grid.Column="0"
+                             Margin="5"
+                             BorderThickness="1"
+                             SelectionMode="Single"
+                             SelectionChanged="lbExercises_SelectionChanged" />
+
+                    <Grid Grid.Row="0"
+                          Grid.Column="1">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <Button x:Name="butClientEdit_1"
+                                Content="Редактировать"
+                                Grid.Row="0"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butClientEdit_Click" />
+
+                        <Button x:Name="butClientOpenFolder_1"
+                                Content="Открыть папку"
+                                Grid.Row="1"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butClientOpenFolder_Click" />
+
+                        <Button x:Name="butClientAddOrderSingle_1"
+                                Content="Добавить разовый заказ"
+                                Grid.Row="2"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butClientAddOrderSingle_Click" />
+
+                        <Button x:Name="butClientAddOrderRegular_1"
+                                Content="Добавить регулярный заказ"
+                                Grid.Row="3"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butClientAddOrderRegular_Click" />
+
+                    </Grid>
+
+                    <Grid Grid.Row="1"
+                          Grid.Column="1">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <RichTextBox x:Name="rtbOrder_1"
+                                     Grid.Row="0"
+                                     Margin="5"
+                                     BorderThickness="1"
+                                     IsReadOnly="True" />
+
+                        <Button x:Name="butOrderEdit_1"
+                                Content="Редактировать"
+                                Grid.Row="1"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butOrderEdit_Click" />
+
+                        <Button x:Name="butAddExercise_1"
+                                Content="Добавить занятие"
+                                Grid.Row="2"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butAddExercise_Click" />
+
+                    </Grid>
+
+                    <Grid Grid.Row="2"
+                          Grid.Column="1">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <RichTextBox x:Name="rtbExercise_1"
+                                     Grid.Row="0"
+                                     Margin="5"
+                                     BorderThickness="1"
+                                     IsReadOnly="True" />
+
+                        <Button x:Name="butExerciseEdit_1"
+                                Content="Редактировать"
+                                Grid.Row="1"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butExerciseEdit_Click" />
+
+                    </Grid>
+
+                </Grid>
+
+                <Grid Grid.Row="0"
+                      Grid.Column="2"
+                      x:Name="gridClient_2">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <RichTextBox x:Name="rtbClient_2"
+                                 Grid.Row="0"
+                                 Grid.Column="0"
+                                 Margin="5"
+                                 BorderThickness="1"
+                                 IsReadOnly="True" />
+
+                    <ListBox x:Name="lbOrders_2"
+                             Grid.Row="1"
+                             Grid.Column="0"
+                             Margin="5"
+                             BorderThickness="1"
+                             SelectionMode="Single"
+                             SelectionChanged="lbOrders_SelectionChanged" />
+
+                    <ListBox x:Name="lbExercises_2"
+                             Grid.Row="2"
+                             Grid.Column="0"
+                             Margin="5"
+                             BorderThickness="1"
+                             SelectionMode="Single"
+                             SelectionChanged="lbExercises_SelectionChanged" />
+
+                    <Grid Grid.Row="0"
+                          Grid.Column="1">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <Button x:Name="butClientEdit_2"
+                                Content="Редактировать"
+                                Grid.Row="0"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butClientEdit_Click" />
+
+                        <Button x:Name="butClientOpenFolder_2"
+                                Content="Открыть папку"
+                                Grid.Row="1"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butClientOpenFolder_Click" />
+
+                        <Button x:Name="butClientAddOrderSingle_2"
+                                Content="Добавить разовый заказ"
+                                Grid.Row="2"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butClientAddOrderSingle_Click" />
+
+                        <Button x:Name="butClientAddOrderRegular_2"
+                                Content="Добавить регулярный заказ"
+                                Grid.Row="3"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butClientAddOrderRegular_Click" />
+
+                    </Grid>
+
+                    <Grid Grid.Row="1"
+                          Grid.Column="1">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <RichTextBox x:Name="rtbOrder_2"
+                                     Grid.Row="0"
+                                     Margin="5"
+                                     BorderThickness="1"
+                                     IsReadOnly="True" />
+
+                        <Button x:Name="butOrderEdit_2"
+                                Content="Редактировать"
+                                Grid.Row="1"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butOrderEdit_Click" />
+
+                        <Button x:Name="butAddExercise_2"
+                                Content="Добавить занятие"
+                                Grid.Row="2"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butAddExercise_Click" />
+
+                    </Grid>
+
+                    <Grid Grid.Row="2"
+                          Grid.Column="1">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <RichTextBox x:Name="rtbExercise_2"
+                                     Grid.Row="0"
+                                     Margin="5"
+                                     BorderThickness="1"
+                                     IsReadOnly="True" />
+
+                        <Button x:Name="butExerciseEdit_2"
+                                Content="Редактировать"
+                                Grid.Row="1"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butExerciseEdit_Click" />
+
+                    </Grid>
+
+                </Grid>
+
+                <Grid Grid.Row="1"
+                      Grid.Column="0"
+                      x:Name="gridClient_3">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <RichTextBox x:Name="rtbClient_3"
+                                 Grid.Row="0"
+                                 Grid.Column="0"
+                                 Margin="5"
+                                 BorderThickness="1"
+                                 IsReadOnly="True" />
+
+                    <ListBox x:Name="lbOrders_3"
+                             Grid.Row="1"
+                             Grid.Column="0"
+                             Margin="5"
+                             BorderThickness="1"
+                             SelectionMode="Single"
+                             SelectionChanged="lbOrders_SelectionChanged" />
+
+                    <ListBox x:Name="lbExercises_3"
+                             Grid.Row="2"
+                             Grid.Column="0"
+                             Margin="5"
+                             BorderThickness="1"
+                             SelectionMode="Single"
+                             SelectionChanged="lbExercises_SelectionChanged" />
+
+                    <Grid Grid.Row="0"
+                          Grid.Column="1">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <Button x:Name="butClientEdit_3"
+                                Content="Редактировать"
+                                Grid.Row="0"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butClientEdit_Click" />
+
+                        <Button x:Name="butClientOpenFolder_3"
+                                Content="Открыть папку"
+                                Grid.Row="1"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butClientOpenFolder_Click" />
+
+                        <Button x:Name="butClientAddOrderSingle_3"
+                                Content="Добавить разовый заказ"
+                                Grid.Row="2"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butClientAddOrderSingle_Click" />
+
+                        <Button x:Name="butClientAddOrderRegular_3"
+                                Content="Добавить регулярный заказ"
+                                Grid.Row="3"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butClientAddOrderRegular_Click" />
+
+                    </Grid>
+
+                    <Grid Grid.Row="1"
+                          Grid.Column="1">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <RichTextBox x:Name="rtbOrder_3"
+                                     Grid.Row="0"
+                                     Margin="5"
+                                     BorderThickness="1"
+                                     IsReadOnly="True" />
+
+                        <Button x:Name="butOrderEdit_3"
+                                Content="Редактировать"
+                                Grid.Row="1"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butOrderEdit_Click" />
+
+                        <Button x:Name="butAddExercise_3"
+                                Content="Добавить занятие"
+                                Grid.Row="2"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butAddExercise_Click" />
+
+                    </Grid>
+
+                    <Grid Grid.Row="2"
+                          Grid.Column="1">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <RichTextBox x:Name="rtbExercise_3"
+                                     Grid.Row="0"
+                                     Margin="5"
+                                     BorderThickness="1"
+                                     IsReadOnly="True" />
+
+                        <Button x:Name="butExerciseEdit_3"
+                                Content="Редактировать"
+                                Grid.Row="1"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butExerciseEdit_Click" />
+
+                    </Grid>
+
+                </Grid>
+
+                <Grid Grid.Row="1"
+                      Grid.Column="1"
+                      x:Name="gridClient_4">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <RichTextBox x:Name="rtbClient_4"
+                                 Grid.Row="0"
+                                 Grid.Column="0"
+                                 Margin="5"
+                                 BorderThickness="1"
+                                 IsReadOnly="True" />
+
+                    <ListBox x:Name="lbOrders_4"
+                             Grid.Row="1"
+                             Grid.Column="0"
+                             Margin="5"
+                             BorderThickness="1"
+                             SelectionMode="Single"
+                             SelectionChanged="lbOrders_SelectionChanged" />
+
+                    <ListBox x:Name="lbExercises_4"
+                             Grid.Row="2"
+                             Grid.Column="0"
+                             Margin="5"
+                             BorderThickness="1"
+                             SelectionMode="Single"
+                             SelectionChanged="lbExercises_SelectionChanged" />
+
+                    <Grid Grid.Row="0"
+                          Grid.Column="1">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <Button x:Name="butClientEdit_4"
+                                Content="Редактировать"
+                                Grid.Row="0"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butClientEdit_Click" />
+
+                        <Button x:Name="butClientOpenFolder_4"
+                                Content="Открыть папку"
+                                Grid.Row="1"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butClientOpenFolder_Click" />
+
+                        <Button x:Name="butClientAddOrderSingle_4"
+                                Content="Добавить разовый заказ"
+                                Grid.Row="2"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butClientAddOrderSingle_Click" />
+
+                        <Button x:Name="butClientAddOrderRegular_4"
+                                Content="Добавить регулярный заказ"
+                                Grid.Row="3"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butClientAddOrderRegular_Click" />
+
+                    </Grid>
+
+                    <Grid Grid.Row="1"
+                          Grid.Column="1">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <RichTextBox x:Name="rtbOrder_4"
+                                     Grid.Row="0"
+                                     Margin="5"
+                                     BorderThickness="1"
+                                     IsReadOnly="True" />
+
+                        <Button x:Name="butOrderEdit_4"
+                                Content="Редактировать"
+                                Grid.Row="1"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butOrderEdit_Click" />
+
+                        <Button x:Name="butAddExercise_4"
+                                Content="Добавить занятие"
+                                Grid.Row="2"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butAddExercise_Click" />
+
+                    </Grid>
+
+                    <Grid Grid.Row="2"
+                          Grid.Column="1">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <RichTextBox x:Name="rtbExercise_4"
+                                     Grid.Row="0"
+                                     Margin="5"
+                                     BorderThickness="1"
+                                     IsReadOnly="True" />
+
+                        <Button x:Name="butExerciseEdit_4"
+                                Content="Редактировать"
+                                Grid.Row="1"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butExerciseEdit_Click" />
+
+                    </Grid>
+
+                </Grid>
+
+                <Grid Grid.Row="1"
+                      Grid.Column="2"
+                      x:Name="gridClient_5">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <RichTextBox x:Name="rtbClient_5"
+                                 Grid.Row="0"
+                                 Grid.Column="0"
+                                 Margin="5"
+                                 BorderThickness="1"
+                                 IsReadOnly="True" />
+
+                    <ListBox x:Name="lbOrders_5"
+                             Grid.Row="1"
+                             Grid.Column="0"
+                             Margin="5"
+                             BorderThickness="1"
+                             SelectionMode="Single"
+                             SelectionChanged="lbOrders_SelectionChanged" />
+
+                    <ListBox x:Name="lbExercises_5"
+                             Grid.Row="2"
+                             Grid.Column="0"
+                             Margin="5"
+                             BorderThickness="1"
+                             SelectionMode="Single"
+                             SelectionChanged="lbExercises_SelectionChanged" />
+
+                    <Grid Grid.Row="0"
+                          Grid.Column="1">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <Button x:Name="butClientEdit_5"
+                                Content="Редактировать"
+                                Grid.Row="0"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butClientEdit_Click" />
+
+                        <Button x:Name="butClientOpenFolder_5"
+                                Content="Открыть папку"
+                                Grid.Row="1"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butClientOpenFolder_Click" />
+
+                        <Button x:Name="butClientAddOrderSingle_5"
+                                Content="Добавить разовый заказ"
+                                Grid.Row="2"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butClientAddOrderSingle_Click" />
+
+                        <Button x:Name="butClientAddOrderRegular_5"
+                                Content="Добавить регулярный заказ"
+                                Grid.Row="3"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butClientAddOrderRegular_Click" />
+
+                    </Grid>
+
+                    <Grid Grid.Row="1"
+                          Grid.Column="1">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <RichTextBox x:Name="rtbOrder_5"
+                                     Grid.Row="0"
+                                     Margin="5"
+                                     BorderThickness="1"
+                                     IsReadOnly="True" />
+
+                        <Button x:Name="butOrderEdit_5"
+                                Content="Редактировать"
+                                Grid.Row="1"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butOrderEdit_Click" />
+
+                        <Button x:Name="butAddExercise_5"
+                                Content="Добавить занятие"
+                                Grid.Row="2"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butAddExercise_Click" />
+
+                    </Grid>
+
+                    <Grid Grid.Row="2"
+                          Grid.Column="1">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <RichTextBox x:Name="rtbExercise_5"
+                                     Grid.Row="0"
+                                     Margin="5"
+                                     BorderThickness="1"
+                                     IsReadOnly="True" />
+
+                        <Button x:Name="butExerciseEdit_5"
+                                Content="Редактировать"
+                                Grid.Row="1"
+                                FontSize="12"
+                                Margin="5"
+                                Click="butExerciseEdit_Click" />
+
+                    </Grid>
+
+                </Grid>
+
+            </Grid>
+
+            <Grid Grid.Column="2">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*" />
+                        <ColumnDefinition Width="40*" />
+                        <ColumnDefinition Width="10*" />
+                        <ColumnDefinition Width="40*" />
+                    </Grid.ColumnDefinitions>
+
+                    <RichTextBox x:Name="rtbDay0"
+                                 Grid.Row="0"
+                                 Grid.Column="0"
+                                 Width="35"
+                                 Height="35"
+                                 IsReadOnly="True"
+                                 BorderThickness="0" />
+
+                    <ListBox x:Name="lbData00"
+                             Grid.Row="0"
+                             Grid.Column="1"
+                             Margin="5,5,5,5"
+                             SelectionChanged="lbData_SelectionChanged" />
+
+                    <RichTextBox x:Name="rtbDay1"
+                                 Grid.Row="1"
+                                 Grid.Column="0"
+                                 Width="35"
+                                 Height="35"
+                                 IsReadOnly="True"
+                                 BorderThickness="0" />
+
+                    <ListBox x:Name="lbData01"
+                             Grid.Row="1"
+                             Grid.Column="1"
+                             Margin="5,5,5,5"
+                             SelectionChanged="lbData_SelectionChanged" />
+
+                    <RichTextBox x:Name="rtbDay2"
+                                 Grid.Row="2"
+                                 Grid.Column="0"
+                                 Width="35"
+                                 Height="35"
+                                 IsReadOnly="True"
+                                 BorderThickness="0" />
+
+                    <ListBox x:Name="lbData02"
+                             Grid.Row="2"
+                             Grid.Column="1"
+                             Margin="5,5,5,5"
+                             SelectionChanged="lbData_SelectionChanged" />
+
+                    <RichTextBox x:Name="rtbDay3"
+                                 Grid.Row="3"
+                                 Grid.Column="0"
+                                 Width="35"
+                                 Height="35"
+                                 IsReadOnly="True"
+                                 BorderThickness="0" />
+
+                    <ListBox x:Name="lbData03"
+                             Grid.Row="3"
+                             Grid.Column="1"
+                             Margin="5,5,5,5"
+                             SelectionChanged="lbData_SelectionChanged" />
+
+                    <RichTextBox x:Name="rtbDay4"
+                                 Grid.Row="4"
+                                 Grid.Column="0"
+                                 Width="35"
+                                 Height="35"
+                                 IsReadOnly="True"
+                                 BorderThickness="0" />
+
+                    <ListBox x:Name="lbData04"
+                             Grid.Row="4"
+                             Grid.Column="1"
+                             Margin="5,5,5,5"
+                             SelectionChanged="lbData_SelectionChanged" />
+
+                    <RichTextBox x:Name="rtbDay5"
+                                 Grid.Row="5"
+                                 Grid.Column="0"
+                                 Width="35"
+                                 Height="35"
+                                 IsReadOnly="True"
+                                 BorderThickness="0" />
+
+                    <ListBox x:Name="lbData05"
+                             Grid.Row="5"
+                             Grid.Column="1"
+                             Margin="5,5,5,5"
+                             SelectionChanged="lbData_SelectionChanged" />
+
+                    <RichTextBox x:Name="rtbDay6"
+                                 Grid.Row="6"
+                                 Grid.Column="0"
+                                 Width="35"
+                                 Height="35"
+                                 IsReadOnly="True"
+                                 BorderThickness="0" />
+
+                    <ListBox x:Name="lbData06"
+                             Grid.Row="6"
+                             Grid.Column="1"
+                             Margin="5,5,5,5"
+                             SelectionChanged="lbData_SelectionChanged" />
+
+                    <RichTextBox x:Name="rtbDay7"
+                                 Grid.Row="0"
+                                 Grid.Column="2"
+                                 Width="35"
+                                 Height="35"
+                                 IsReadOnly="True"
+                                 BorderThickness="0" />
+
+                    <ListBox x:Name="lbData07"
+                             Grid.Row="0"
+                             Grid.Column="3"
+                             Margin="5,5,5,5"
+                             SelectionChanged="lbData_SelectionChanged" />
+
+                    <RichTextBox x:Name="rtbDay8"
+                                 Grid.Row="1"
+                                 Grid.Column="2"
+                                 Width="35"
+                                 Height="35"
+                                 IsReadOnly="True"
+                                 BorderThickness="0" />
+
+                    <ListBox x:Name="lbData08"
+                             Grid.Row="1"
+                             Grid.Column="3"
+                             Margin="5,5,5,5"
+                             SelectionChanged="lbData_SelectionChanged" />
+
+                    <RichTextBox x:Name="rtbDay9"
+                                 Grid.Row="2"
+                                 Grid.Column="2"
+                                 Width="35"
+                                 Height="35"
+                                 IsReadOnly="True"
+                                 BorderThickness="0" />
+
+                    <ListBox x:Name="lbData09"
+                             Grid.Row="2"
+                             Grid.Column="3"
+                             Margin="5,5,5,5"
+                             SelectionChanged="lbData_SelectionChanged" />
+
+                    <RichTextBox x:Name="rtbDay10"
+                                 Grid.Row="3"
+                                 Grid.Column="2"
+                                 Width="35"
+                                 Height="35"
+                                 IsReadOnly="True"
+                                 BorderThickness="0" />
+
+                    <ListBox x:Name="lbData10"
+                             Grid.Row="3"
+                             Grid.Column="3"
+                             Margin="5,5,5,5"
+                             SelectionChanged="lbData_SelectionChanged" />
+
+                    <RichTextBox x:Name="rtbDay11"
+                                 Grid.Row="4"
+                                 Grid.Column="2"
+                                 Width="35"
+                                 Height="35"
+                                 IsReadOnly="True"
+                                 BorderThickness="0" />
+
+                    <ListBox x:Name="lbData11"
+                             Grid.Row="4"
+                             Grid.Column="3"
+                             Margin="5,5,5,5"
+                             SelectionChanged="lbData_SelectionChanged" />
+
+                    <RichTextBox x:Name="rtbDay12"
+                                 Grid.Row="5"
+                                 Grid.Column="2"
+                                 Width="35"
+                                 Height="35"
+                                 IsReadOnly="True"
+                                 BorderThickness="0" />
+
+                    <ListBox x:Name="lbData12"
+                             Grid.Row="5"
+                             Grid.Column="3"
+                             Margin="5,5,5,5"
+                             SelectionChanged="lbData_SelectionChanged" />
+
+                    <RichTextBox x:Name="rtbDay13"
+                                 Grid.Row="6"
+                                 Grid.Column="2"
+                                 Width="35"
+                                 Height="35"
+                                 IsReadOnly="True"
+                                 BorderThickness="0" />
+
+                    <ListBox x:Name="lbData13"
+                             Grid.Row="6"
+                             Grid.Column="3"
+                             Margin="5,5,5,5"
+                             SelectionChanged="lbData_SelectionChanged" />
+
+                </Grid>
+
+                <Grid Grid.Row="1">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="buttonLeft"
+                            Grid.Column="0"
+                            Margin="5"
+                            Width="70"
+                            Background="AliceBlue"
+                            Click="buttonLeft_Click">
+                        <TextBlock FontFamily="Segoe UI Symbol"
+                                   FontSize="40"
+                                   Text="&#x21e6;"
+                                   Margin="0,-17,0,0" />
+                    </Button>
+
+                    <Button x:Name="buttonRight"
+                            Grid.Column="1"
+                            Margin="5"
+                            Width="70"
+                            Background="AliceBlue"
+                            Click="buttonRight_Click">
+                        <TextBlock FontFamily="Segoe UI Symbol"
+                                   FontSize="40"
+                                   Text="&#x21e8;"
+                                   Margin="0,-17,0,0" />
+                    </Button>
+
+                </Grid>
+
+            </Grid>
+
+        </Grid>
+
+        <Grid Grid.Row="1">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="13*" />
+                <ColumnDefinition Width="13*" />
+                <ColumnDefinition Width="13*" />
+                <ColumnDefinition Width="13*" />
+                <ColumnDefinition Width="16*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="10*" />
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="buttonAddDB"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Width="160"
+                    Height="32"
+                    Content="Добавить базу данных"
+                    Click="buttonAddDB_Click" />
+
+            <Button x:Name="buttonAddClient"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Width="160"
+                    Height="32"
+                    Content="Добавить клиента"
+                    Click="buttonAddClient_Click" />
+
+            <Button x:Name="buttonAddEvent"
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Width="160"
+                    Height="32"
+                    Content="Добавить событие"
+                    Click="buttonAddEvent_Click" />
+
+            <Button x:Name="buttonEditEvent"
+                    Grid.Row="1"
+                    Grid.Column="3"
+                    Width="160"
+                    Height="32"
+                    Content="Редактировать событие"
+                    IsEnabled="False"
+                    Click="buttonEditEvent_Click" />
+
+            <TextBlock x:Name="textBlockSyncStatus"
+                       Grid.Row="1"
+                       Grid.Column="4"
+                       Margin="5"
+                       TextAlignment="Right"
+                       VerticalAlignment="Center"
+                       Text="Статус синхронизации БД" />
+
+            <Ellipse x:Name="circleSyncStatus"
+                     Grid.Row="1"
+                     Grid.Column="5"
+                     Height="20"
+                     Width="20"
+                     Margin="5"
+                     Stroke="Gray"
+                     Fill="Gray" />
+
+            <TextBox x:Name="tbSyncMessage"
+                     Grid.Row="1"
+                     Grid.Column="6"
+                     Margin="5"
+                     Height="30"
+                     TextAlignment="Left"
+                     VerticalAlignment="Center"
+                     TextWrapping="Wrap"
+                     FontSize="10"
+                     BorderThickness="0" />
+
+        </Grid>
+
+    </Grid>
+
+</Window>

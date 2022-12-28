@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+		<Platforms>x64</Platforms>
+		<PublishSingleFile Condition="'$(Configuration)' == 'Release'">true</PublishSingleFile>
+		<SelfContained>true</SelfContained>
+		<IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<ApplicationIcon>icon_app.ico</ApplicationIcon>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="icon_main.ico" />
+		<None Remove="icon_main.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="icon_app.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="wav\reminder_event_1h.wav" />
+		<EmbeddedResource Include="wav\reminder_event_2h.wav" />
+		<EmbeddedResource Include="wav\reminder_exercise_15m.wav" />
+		<EmbeddedResource Include="wav\reminder_exercise_1h.wav" />
+		<EmbeddedResource Include="wav\reminder_exercise_30m.wav" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="icon_main.png" />
+	</ItemGroup>
+
+</Project>
